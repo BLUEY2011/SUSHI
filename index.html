@@ -4,13 +4,78 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <title>Gracie VR scene</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+  <script src="script.js"></script>
 </head>
 
 <body>
-  Hello world
-  <script src="script.js"></script>
+  <a-scene>
+    <a-assets>
+    <!-- Video -->
+    <video id="videoclip" loop="true" src="tvAssets/birds.mp4" crossorigin="anonymous" preload="auto"></video>
+    <img id="play" src="tvAssets/btnPlay.png" preload="auto">
+    <img id="pause" src="tvAssets/btnPause.png" preload="auto">
+    <img id="tv_background" src="tvAssets/tv_background.jpg" preload="auto">
+    </a-assets>
+    <a-entity>
+      <a-video src="#videoclip" position="-3.893 1.6 0" rotation="0 90 0" width="2" height="1.125"></a-video>
+      <a-entity environment="preset:goaland; dressingAmount:132;skyColor:#FCB9B2"></a-entity>
+      <!-- strt of house -->
+      <a-cylinder id="floor" position="0 0 0" radius="7.5" color="#F2F2F2" height="0.1"></a-cylinder>
+      <a-box id="box1" position=" 0  1.473  4.907" rotation="0  0  0" scale="10  3  0.2" src="images/ocean.jpg"></a-box>
+      <a-box id="box2" position="0  1.473  -4.907" rotation="0  0  0" scale="10  3  0.2" color="#purple"></a-box>
+      <a-box id="box3" position="5.049  1.454  -0.008" rotation="0  -90  0" scale="10  3  0.2" color="#96CDFF"></a-box>
+      <a-box id="box4" position="-5.049  1.454  -0.008" rotation="0  -90  0" scale="10  3 0.2" color="#96CDFF"></a-box>
+      <a-cylinder id="triangle_front" segments-radial="3" position="0  3.874 4.907" rotation="-90  0  0"
+        scale="5.774  0.2  1.8" color="light blue"></a-cylinder>
+      <a-cylinder id="triangle_back" segments-radial="3" position="0  3.874 -4.907" rotation="-90  0  0"
+        scale="5.774  0.2  1.8" color="pink"></a-cylinder>
+      <a-box id="roof_right" position="2.580  4.328  0" rotation="28.433  90  0" scale="10.931 0.20  6.110"
+        color="silver"></a-box>
+      <a-box id="roof_left" position="-2.580  4.328  0" rotation="28.433  -90  0" scale="10.931 0.20  6.110"
+        color="silver"></a-box>
+      <!-- strt of art -->
+      <a-box id="frame1" position="-2.653 1.717
+      -4.841" rotation="0 0 0" scale="3 3 0.2" src="images/frame.png">
+        <a-plane id="art1" src="images/flower.jpg" scale="0.5  0.5  0.5" position="0.002  0.002  0.519"
+          rotation="0 0 0"></a-plane>
+      </a-box>
+      <a-box id="frame2" position="3.457 1.442 -4.792" rotation="0 0 0" scale="3 3 0.2" src=images/frame2.png>
+        <a-plane id="art2" src="images/Sunset.jpg" scale="0.5  0.5  0.5" rotation="0 0 0"
+          position="0.002  0.002  0.519"></a-plane>
+      </a-box>
+      <a-plane id="art3" src="images/dog.jpg" scale="2  2  0.5" rotation="0 0 0"
+        position="0.076 2.373 -4.711"></a-plane>
+
+ 
+    <a-obj-model id="3dModel1" src="images/tinker.obj" mtl="images/obj.mtl" position="4.848 0.072 2.664" 
+      rotation="-90 0 0"
+      scale="0.05 0.05 0.05"></a-obj-model>
+
+
+    <!-- TV background -->
+
+    <a-plane id="videoControls" position="-3.893 0.854 0" scale="2 0.386 1.714" rotation="0 90 0" opacity="1"
+      src="#tv_background">
+
+      <!-- Play button -->
+
+      <a-plane id="vidplaybox" src="#play" scale="0.122 0.678 0.122" position="-0.350 0 .01" shader="flat"
+        transparent="true" videoplayer></a-plane>
+
+      <!-- Stop button -->
+
+      <a-plane id="vidpausebox" src="#pause" scale="0.122 0.678 0.122" position="0.350 0 .01" shader="flat"
+        transparent="true" videopauser></a-plane>
+
+    </a-plane>
+
+    </a-entity>
+
+    <a-entity cursor="rayOrigin: mouse"></a-entity>
+    </a-scene>
 </body>
 
 </html>
